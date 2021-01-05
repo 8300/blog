@@ -1,4 +1,9 @@
 //---------------------shell.c-------------------------
+kill -9:
+	kill -HUP [PID]来杀掉这个僵尸进程
+ping:
+	计算机在与非本网段的地址通信时，计算机首先查找网关的MAC，如果网关MAC得不到回应，是不会对PING作出响应的；
+
 0.reptyr	:Tool for moving running programs between ptys
 1.reptyr <pid>
 1.error:
