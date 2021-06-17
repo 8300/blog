@@ -1,0 +1,17 @@
+<h1>link_note.html</h1>
+<h2>install jlink</h2>
+downloads jlink5.0	<br>
+cd /opt/SEGGER/JLink	<br>
+./JLinkExe	<br>
+<h2>command</h2>
+usb	<br>
+r	<br>
+speed 12000	<br>
+loadbin /home/ts/Downloads/init/init.bin 0	<br>
+setpc 0	<br>
+g	<br>
+h	<br>
+loadbin /home/ts/Downloads/tmp/vivi.bin 0x33f80000	<br>
+#loadbin /home/ts/Downloads/tmp/u-boot_S35.bin 0x33f80000	<br>
+setpc 0x33f80000	<br>
+g	<br>

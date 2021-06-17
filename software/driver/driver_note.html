@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<h1>driver_note.html</h1>
+<p style="white-space:pre-wrap">
+
+## command
+
+lsmod 	: read and analysis /proc/modules's file	
+same to /sys/module	
+modprobe: stronger than insmod, it can load other modules that it depend on. the file /lib/modules/<kernel-version>/modules.dep include the symbiosis 	
+	module be maked when you compile the whole kernel	
+	modinfo	: get module information	
+	unload	: rmmod	
+	licence : "GPL" "GPL v2" "GPL and additional rights" " Dual BSD/GPL" "Dual MPL/GPL" "Proprietary"	
+
+## message
+
+printk	
+
+## Makefile
+
+CROSS_COMPILE:= arm-hisiv600-linux-	
+ARCH:= arm 	
+CC    := $(CROSS_COMPILE)gcc	
+LD    := $(CROSS_COMPILE)ld 	
+obj-m := hello.o 	
+KERNELDIR = /media/pluto/sdb/datasheet/tmp/linux-3.18.y 	
+PWD := $(shell pwd) 	
+modules: 	
+$(MAKE) -C $(KERNELDIR) M=$(PWD) modules 	
+modules_install: 
+$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install 	
+clean:	
+rm -f *.o	
+rm -f *.symvers	
+rm -f *.order	
+rm -f *.ko	
+rm -f *.mod.c	
+
+## dmesg
+
+sudo dmesg -c//clear	
+dmesg	
+idVendor=5345, idProduct=1234 	
+sudo vi secbulk.c	
+/*---------secbulk.c-----change param--------//	
+*	static struct usb_device_id secbulk_table[]= {  
+*	{ USB_DEVICE(0x5345, 0x1234)},  	
+*	{ }  	
+*	}; 	
+//---------secbulk.c----------------------*/	
+make -C /lib/modules/`uname -r`/build M=`pwd` modules	
+sudo insmod secbulk.ko	
+lsmod | grep secbulk 	
+
+## error
+
+### Device or resource busy
+waitting...	
+### selected processor does not support ARM mode `dsb'
+don't user readb fuction, code by yourself.
+static inline void my_writeb(u8 b, volatile void __iomem *addr)	{	
+*(volatile u8 __force *) addr = b;	
+}	
+static inline u8 my_readb(const volatile void __iomem *addr) {
+return *(const volatile u8 __force *) addr;	
+}	
+</p>

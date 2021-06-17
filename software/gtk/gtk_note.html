@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<h1>gtk_note.html</h1>
+<p style="white-space:pre-wrap">
+
+## install
+
+sudo apt-get install build-essential libgtk-3-dev	
+	sudo apt install devhelp	
+	sudo apt install libgtk-3-doc	
+
+g_application_run
+To handle these two cases, we override the activate() vfunc, which gets called when the application is launched without commandline arguments, and the open() vfunc, which gets called when the application is launched with commandline arguments.
+
+// 下面只是伪代码，很多函数可能是都是调用链，例如g_object_constructor()等，这边都只使用最后调用的g_object_XX函数来代替
+g_object_new
+{
+    // 注册类信息
+    g_type_class_ref()
+    {
+        type_class_init_Wm()
+        {
+        g_object_base_class_init()
+        // 此处就是viewer_file_class_init
+        g_object_do_class_init()
+        }
+    }
+
+    g_object_new_internal()
+    {
+        // 构造函数被重载的情况
+        g_object_new_with_custom_constructor()
+        {
+            g_object_constructor()
+            {
+                g_type_create_instance()
+                {
+                    // 此处就是viewer_file_init
+                    instance_init()
+                }
+            }
+            // 此处就是viewer_file_constructed
+            g_object_constructed()
+        }
+    }
+}
+
+
+</p>

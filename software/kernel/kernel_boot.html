@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<h1>kernel_boot.html</h1>
+<p style="white-space:pre-wrap">
+
+//---------------------内核启动流程--------------------
+//---------------------名词解释
+BL0 文件是存放在CPU内部IROM中的一段固话代码，CPU启动后首先运行BL0文件 
+BL1 文件是一段外部代码，存放在SD卡或者nandflash上，大小为8k；
+BL2 文件是完整的uboot代码。
+uboot源码开启CONFIG_SPL_BUILD宏定义后，可生成BL1文件
+//---------------------流程
+CPU上电后，运行BL0文件；
+BL0运行时将BL1拷贝到CPU的IRAM中，然后执行BL1；
+BL1文件执行起来后会先进行内存初始化，将BL2文件拷贝到外部内存中（可能是DDR）；
+//---------------------end-----------------------------
+</p>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<h1>gcc_note.html</h1>
+<p style="white-space:pre-wrap">
+<xmp>
+html笔记
+
+# 嵌入doc、txt文档
+<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://bef.gitee.io/README.doc' width='100%' height='565px' frameborder='0'> </iframe>
+<embed src="README.txt">
+<div id="tab_1">
+    <iframe src="README.txt"
+            height="500"
+            width="1200"
+            frameborder="0"
+            scrolling="0"
+    ></iframe>
+</div>
+
+# html支持文本换行
+
+<p style="white-space:pre-wrap">
+fsdf
+fsdf
+</p>
+<head>
+    <meta charset="UTF-8">
+    		<style>
+			#all{
+				margin: 0 auto;
+				width: 1300px;
+			}
+
+			#top{
+				margin: 0 atuo;
+				line-height: 150px;
+				font-family: 楷体;
+				font-size: 24px;
+				width: 1300px;
+				height: 150px;
+				text-align: center;
+				border-bottom: solid 5px black;
+			}
+
+			#left{
+				width: 150px;
+				height: 800px;
+				border-right: solid 5px black;
+				text-align: center;
+				float: left;
+			}
+
+			#left ul{
+				list-style-type: none;
+			}
+
+			#right{
+				width: 1000px;
+				height: 1000px;
+				float: left;
+			}
+			.my_class{
+				width: 1000px;
+				height: 250px;
+			}
+			*{
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+</head>
+<br><a href='html_note.html'>00.html_note.html</a><br>
+<a href='index.html'>01.index.html</a><br>
+</body>
+<a href="html_note.txt" target="mainFrame1">查看任务1</a>
+    <iframe name="mainFrame1"
+            height="500"
+            width="1200"
+            frameborder="0"
+            scrolling="0"
+	    >
+	    342
+    </iframe>
+<embed  name="mainFrame1" src="html_note.txt">
+<br><a href='html_note.txt'>00.html_note.html</a><br>
+<embed src="html_note.txt">
+<div id="all">
+	<div id="top">用框架将任务1、任务2、任务3显示在一个页面中</div>
+	<div id="left">
+		<div style="height: 50px; width: auto;"></div>
+			<ul>
+				<li><a href="task1.html" target="mainFrame1">查看任务1</a></li><br />
+				<li><a href="task2.html" target="mainFrame1">查看任务2</a></li><br />
+				<li><a href="task3.html" target="mainFrame1">查看任务3</a></li><br />
+			</ul>
+	</div>
+	<div id="right">
+		<div id="div1" class="my_class"><iframe name="mainFrame1" style="width: 100%; height: 100%;"></iframe></div>
+	</div>
+</div>
+
+#end
+<script type="text/javascript">
+
+    function display(id){
+        var traget=document.getElementById(id);
+        if(traget.style.display=="none"){
+            traget.style.display="";
+        }else{
+            traget.style.display="none";
+      }
+   }
+</script>
+<input type="submit" value="在线支付" onclick="display('lb')">
+<a href='index.html' onclick="display('lb')">01.index.html</a><br>
+<div id="lb" style="display:none">
+<embed src="html_note.txt">
+</div>
+</xmp>
+</p>
