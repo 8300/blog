@@ -10,4 +10,26 @@
 ## 浏览器快捷键
 
 ctrl+w	:关闭标签页
+
+## 安装jdk jre
+sudo apt install default-jre default-jdk
+
+## make deb
+ 2045  mkdir work
+ 2046  cd work/
+ 2049  mkdir -p ./usr/bin
+ 2050  mkdir DEBIAN
+ 2051  echo "Package: add_num
+Version: 1.0
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 1024
+Maintainer: linuxconfig.org
+Description: Print linuxconfig.org on the screen" >DEBIAN/control
+ 2052  vi DEBIAN/control
+ 2053  cp ../bin/debian/main usr/bin/chat
+ 2054  dpkg -b . /home/ts/tmp/chat_0.0.1.deb
+
 </p>
