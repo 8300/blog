@@ -3,49 +3,117 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<!--
-	<link rel="stylesheet" href="https://8300.github.io/html/css/main.css" type="text/css" />
-	-->
-	<link rel="stylesheet" href="../html/css/main.css" type="text/css" />
 	<title>8300社区</title>
+	<script>
+		function load() {
+			var menu = document.getElementById("menu");
+			if(self!=top){
+				menu.style.display='none';
+				console.log("not show");
+			} else {
+				menu.style.display="block";
+				console.log("show");
+			}
+		}
+	</script>
 </head>
 
-<body style="background:black;">
-	<div style="margin:0 2% 2% 1%; position:fixed; height:100%; background:gray;">
-<div id="technology" style="" onclick="document.all.technology_child.style.display=(document.all.technology_child.style.display =='none')?'':'none'" >
-	+ 技术 </div>
-<div id="technology_child"  style="display:''; padding-left:2em;">
-	<a href="https://8300.github.io/technology/mechine/index.html">机械工程</a> <br>
-	<a href="https://8300.github.io/technology/hardware/index.html">电子电路</a> <br>
-	<a href="https://8300.github.io/technology/software/index.html">软件编程</a> <br>
-	<a href="https://8300.github.io/technology/manual/index.html">官方手册</a> <br>
-</div>
-<div id="main2" style="" onclick="document.all.child2.style.display=(document.all.child2.style.display =='none')?'':'none'" >
-	+ 生活 </div>
-<div id="child2"  style="display:''; padding-left:2em;">
-	<a href="https://8300.github.io/life/audio/index.html">音乐</a> <br>
-	<a href="https://8300.github.io/life/video/index.html">视频</a> <br>
-	<a href="https://8300.github.io/life/deal/index.html">买卖</a> <br>
-</div>
-<div id="tool" style="" onclick="document.all.tool_child.style.display=(document.all.tool_child.style.display =='none')?'':'none'" >
-	+ 在线工具 </div>
-<div id="tool_child"  style="display:''; padding-left:2em;">
-	<a href="https://8300.github.io/tool/calculator/index.html">计算器</a><br>
-</div>
-<div>
-	<a href="https://8300.github.io/software/index.html">常用软件</a><br>
-</div>
-<div>
-	<a href="https://8300.github.io/company/index.html">公司主页</a><br>
-</div>
-<div>
-	<a href="https://8300.github.io/personal/index.html">个人主页</a><br>
-</div>
-<div>
-	<a href="https://8300.github.io/about/index.html">关于</a><br>
-</div>
+<body style="background:black;" onload="load()">
+	<div id="menu" style="margin:0 2% 2% 1%; position:fixed; height:100%; background:gray;">
+		<div>
+			<button style="width:100%"><a href="https://8300.github.io/index.html"><h2>8300主页</h2></a></button>
+		</div>
+		<h3>
+		<div id="technology" style="" onclick="document.all.technology_child.style.display=(document.all.technology_child.style.display =='none')?'':'none'" >
+			+ 技术 </div>
+		<div id="technology_child"  style="display:''; padding-left:2em;">
+			<a href="https://8300.github.io/technology/mechine/index.html">机械工程</a> <br>
+			<a href="https://8300.github.io/technology/hardware/index.html">电子电路</a> <br>
+			<a href="https://8300.github.io/technology/software/index.html">软件编程</a> <br>
+			<a href="https://8300.github.io/technology/manual/index.html">官方手册</a> <br>
+		</div>
+		<div id="main2" style="" onclick="document.all.child2.style.display=(document.all.child2.style.display =='none')?'':'none'" >
+			+ 生活 </div>
+		<div id="child2"  style="display:''; padding-left:2em;">
+			<a href="https://8300.github.io/life/audio/index.html">音乐</a> <br>
+			<a href="https://8300.github.io/life/video/index.html">视频</a> <br>
+			<a href="https://8300.github.io/life/deal/index.html">买卖</a> <br>
+		</div>
+		<div id="tool" style="" onclick="document.all.tool_child.style.display=(document.all.tool_child.style.display =='none')?'':'none'" >
+			+ 在线工具 </div>
+		<div id="tool_child"  style="display:''; padding-left:2em;">
+			<a href="https://8300.github.io/tool/calculator/index.html">计算器</a><br>
+		</div>
+		<div>
+			<a href="https://8300.github.io/software/index.html">常用软件</a><br>
+		</div>
+		<div>
+			<a href="https://8300.github.io/company/index.html">公司主页</a><br>
+		</div>
+		<div>
+			<a href="https://8300.github.io/personal/index.html">个人主页</a><br>
+		</div>
+		<div>
+			<a href="https://8300.github.io/about/index.html">关于</a><br>
+		</div>
+		</h3>
 	</div>
+	<!--
 	<div style="margin:2% 2% 2% 10%; display:flex;">
 		<iframe src="index.htm" height=1000px width=2000px />
 	</div>
+</body>
+	-->
+<div style="margin:2% 2% 2% 12%; color: #009900">
+<br><a style="color: #009900" href='数组用法.pdf'>00.数组用法.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='防止缓冲区溢出.pdf'>01.防止缓冲区溢出.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='多线程中的锁机制.pdf'>02.多线程中的锁机制.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='内存操作.pdf'>03.内存操作.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='指针、函数、结构体、递归.pdf'>04.指针、函数、结构体、递归.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='stty命令详解.pdf'>05.stty命令详解.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='函数返回字符串的四种方法.pdf'>06.函数返回字符串的四种方法.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='解决Linux下串口数据接收不全的异常问题.pdf'>07.解决Linux下串口数据接收不全的异常问题.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='Linux如何调试内存泄漏.pdf'>08.Linux如何调试内存泄漏.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='linux调试之printf.pdf'>09.linux调试之printf.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='do_while0只执行一次的意义.pdf'>10.do_while0只执行一次的意义.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='linux_termios串口编程.pdf'>11.linux_termios串口编程.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='使用异或运算交换两数的值.pdf'>12.使用异或运算交换两数的值.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='extern_C的作用.pdf'>13.extern_C的作用.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='常用转换函数实现原理.pdf'>14.常用转换函数实现原理.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='linux串口编程select.pdf'>15.linux串口编程select.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='通过操作Section为linuxELF程序新增数据.pdf'>16.通过操作Section为linuxELF程序新增数据.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='一个可执行文件原来包含了这么多信息.pdf'>17.一个可执行文件原来包含了这么多信息.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='errno.html'>18.errno.html</a><div style='float:right'>Wed Jul 14 09:35:38 2021
+</div><br>
+<a style="color: #009900" href='gcc_note.html'>19.gcc_note.html</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='c程序像shell脚本一样执行.pdf'>20.c程序像shell脚本一样执行.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='linux下串口编程入门.pdf'>21.linux下串口编程入门.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='各种类型的变量该如何初始化.pdf'>22.各种类型的变量该如何初始化.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='进程间的五种通信方式介绍.pdf'>23.进程间的五种通信方式介绍.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+<a style="color: #009900" href='LINUX下select设置超时.pdf'>24.LINUX下select设置超时.pdf</a><div style='float:right'>Thu Jun 17 15:11:12 2021
+</div><br>
+</div>
 </body>
