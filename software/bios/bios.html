@@ -7,7 +7,23 @@
 <p style="white-space:pre-wrap">
 
 ## uboot
- 
+
+### dts
+
+这个设备树和内核里面的设备树一样的，是一个东西。
+扁平设备树的出现，让一个二进制文件支持多种设备成为了可能。
+uboot里面，在设备的deconfig里通过CONFIG_DEFAULT_DEVICE_TREE="xxxxx"来指定。
+如果设置CONFIG_OF_EMBED，那么uboot会把设备树编译进镜像内。
+如果设置CONFIG_OF_SEPARATE，则直接用   cat u-boot.bin u-boot.dtb >image.bin这样的方式把设备树放在uboot镜像后面。
+
+fdt 源文件是dts,通过dtc编译后为dtb文件，对设备数的二进制和文件源文件两种格式可以用fdtdump或者ftdget/fdtput进行读写。
+
+实际使用过程中，一般都是拷贝已经有的模板（相同MCU）的dts来编辑生成自己的dts。
+
+uboot预配置文件路径 configs里  ，dts路径 arch/<arch>/dts/
+
+添加自己的dts文件可以拷贝已经有的相同MCU 板子的dts文件，修改内容后，并在 arch/<arch>/dts/Makefile里添加上，一般搜索到你拷贝的那个dts文件名的下一行就行
+
 ### 1.within
 setenv serverip 192.168.1.110	
 setenv ipaddr 192.168.1.101	
