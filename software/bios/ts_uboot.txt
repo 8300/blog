@@ -1,0 +1,27 @@
+uboot 启动流程
+ 1.关于启动流程
+
+1.1 启动阶段分为3个，bl0，bl1，bl2。这几个阶段的划分是就功能而言的，不能看得太死。
+
+      bl0：出厂的时候就固化在irom中一段代码，主要负责拷贝8kb的bl1到s5pv210的一个96kb大小内部sram(Internal SRAM)中运行。值得注意的是s5pv210的Internal SRAM支持的bl1的大小可以达到16kb，容量的扩增是为了适应bootloder变得越来复杂而做的。虽然如此，但目前我们制作出来的bl1的大小仍然可以保持在8kb以内，同样能满足需求。
+
+      bl1：u-boot的前8kb代码(s5pv210也支持16kb大小，原因上一点提过了)，除了初始化系统时钟和一些基本的硬件外，主要负责完成代码的搬运工作(我设计成搬运bl1+bl2，而不仅仅是bl2)，也就是将完整的u-boot代码(bl1+bl2)从nand flash或者mmcSD等的存储器中读取到内存中，然后跳转到内存中运行u-boot。
+
+      bl2：完成全面的硬件初始化和加载OS到内存中，接着运行OS
+ 1.2 首先把启动部分的代码分为3部分，以start.S为主，另外还有lowlevel_init.S，mem_setup.S，ctr0.S。
+
+      其中lowlevel_init.S主要是一部分硬件的初始化，尤其是系统时钟和DRAM的初始化。如果u-boot一旦被搬运到内存中运行，那么是必须要跳过时钟和DRAM的初始化的，因为这在搬运之前已经做过了。并且如果代码在内存中运行的时侯你却去初始化DRAM，那必然导致崩溃！
+
+     mem_setup.S：DRAM初始化代码和MMU相关代码放在这个文件中。
+
+     ctr0.S：u-boot自带的代码文件，存放汇编函数main。
+
+1.3 启动代码相关的几个文件在u-boot中的路径
+
+    start.S：            /arch/arm/cpu/armv7/start.S (需要自己修改)
+
+    lowlevel_init.S：/board/samsung/zsy210/ lowlevel_init.S  (需要自己修改)
+
+    mem_setup.S:   /board/samsung/zsy210/ mem_setup.S   (u-boot没有，需要自己添加)
+
+    ctr0.S：            /arch/arm/lib/ctr0.S  (u-boot自带,一般不需要修改)
