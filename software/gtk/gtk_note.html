@@ -6,12 +6,21 @@
 <h1>gtk_note.html</h1>
 <p style="white-space:pre-wrap">
 
-## install
+</p><h2>install</h2><p style="white-space:pre-wrap">
 
 sudo apt-get install build-essential libgtk-3-dev	
 	sudo apt install devhelp	
 	sudo apt install libgtk-3-doc	
 
+</p><h2>error</h2><p style="white-space:pre-wrap">
+	</p><h3>xml-stripblanks preprocessing requested, but XMLLINT is not set, and xmllint is not in PATH</h3><p style="white-space:pre-wrap">
+sudo apt install libxml2-utils
+	</p><h3>Settings schema 'org.gtk.exampleapp' is not installed</h3><p style="white-space:pre-wrap">
+cd compile path to run
+	</p><h3>The dialog box is not displayed</h3><p style="white-space:pre-wrap">
+open glade, check 'composite' after the 'id' input box;
+
+</p><h2>install</h2><p style="white-space:pre-wrap">
 g_application_run
 To handle these two cases, we override the activate() vfunc, which gets called when the application is launched without commandline arguments, and the open() vfunc, which gets called when the application is launched with commandline arguments.
 
