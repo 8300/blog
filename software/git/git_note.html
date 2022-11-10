@@ -19,9 +19,13 @@ git push
 username:ts	
 password:54mingwang	
 
-</p><h2>set config</h2><p style="white-space:pre-wrap">
-git show <commit_id>
+</p><h2>reset commit</h2><p style="white-space:pre-wrap">
+//reset once commit
 git reset --soft HEAD^
+or
+git reset --soft HEAD~1 
+//reset twice commit
+git reset --soft HEAD~2
 </p><h2>set config</h2><p style="white-space:pre-wrap">
 
 git config --global user.name "Pluto"	
