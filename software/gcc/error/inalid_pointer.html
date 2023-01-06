@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
 </head>
-<h1>gcc_note.html</h1>
-<p style="white-space:pre-wrap">
-
-
-
-</p><h2>invalid pointer</h2><p style="white-space:pre-wrap">
+<h1>invalid pointer</h1>
 gdb 打印变量没问题，但是free就出错
 以近期程序free致使coredown。指针
 指针非空，不得其解，通常状况下free不可能出错的。开始觉得是内存越界，无果。后来才发现低层队列了取结点有误，致使取出的不是地址首指针。队列
@@ -21,7 +16,3 @@ malloc_chunk不正确，可能缘由以下：db
 2。 p = malloc， p++, free(p),此时p并不是地址首指针， 以前原本就没有 malloc_chunk，故free会出错。co
 free非空指针出错只可能与malloc_chunk有关了,
 检查前面一个calloc变量的赋值情况
-
-</p><h2>parameter name omitted</h2><p style="white-space:pre-wrap">
-参数为空，如果参数不为null，还是报错，那可能是有宏定义跟参数名重复了
-</p>

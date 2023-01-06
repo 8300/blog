@@ -1,0 +1,9 @@
+	sources.list
+browers open https://www.debian.org/mirror/list
+sudo nano /etc/apt/sources.list
+/*
+deb http://ftp.cn.debian.org/debian bullseye contrib main
+*/
+deb url codename components
+codename:版本代号，使用lsb_release -sc 查看
+components:软件性质（free or non-free)
