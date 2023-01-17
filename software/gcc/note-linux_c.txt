@@ -1,0 +1,18 @@
+		linux c
+chapter 1: 开发环境
+	1.1 操作系统简介
+	1.2 virtuabox虚拟机使用
+	1.3 debian系统安装
+	1.4 编译器gcc、make、vi安装
+	1.5 第一个程序 hello world
+	1.6 linux shell 常用命令(cd,ls,cp,mkdir)
+chapter 2: c 语言基础
+chapter 3: 编译过程(make)、单步调试(gdb）
+chapter 4: .网络类tcp udp原理及编程。
+	 .串口类modbus编程
+chapter 5: .web类-编写webserver websocket cgi
+	 .编写web后端
+	 .简单的web前端(html+js)
+chapter 6: .界面编程(gtk)
+chapter 7: .3D建模
+
