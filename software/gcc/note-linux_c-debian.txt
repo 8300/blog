@@ -2,7 +2,7 @@
 chapter 1: 开发环境
 	1.1 操作系统简介
 	1.2 virtuabox虚拟机使用
-	1.3 deepin系统安装
+	1.3 debian系统安装
 	1.4 linux shell 常用命令(cd,ls,cp,mkdir)
 	1.5 编译器gcc、make、vi安装
 	1.6 第一个程序 hello world
@@ -29,10 +29,17 @@ debian,deepin,centos等.
 	浏览器搜索virtualbox,官方网站地址一般直接是软件名.切忌直接点击第一个,一定
 要看好网址,https://www.virtualbox.org.点击download后会跳转到系统选择页面,如果本机
 电脑是windows直接点windows hosts即可下载,安装方式跟普通软件一样.
-1.3 deepin系统镜安装
-1.3.1 deepin下载
-	https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/20.8/deepin-desktop-community-20.8-amd64.iso
-1.3.2 deepin安装
+1.3 debian系统镜安装
+1.3.1 debian下载
+	主流linux开发环境是ubuntu等，ubuntu是基于debian系统改进的,因此我们直接使用
+原始版debian.
+	浏览器直接搜索debian,官方网站为:https://www.debian.org,直接download的是网
+络版，网络版只会下载部分组件，安装时又去国际网站上下载其余组件，由于国内政府网络管
+理，网速很差，我们直接下载完整版更好，在download下面找到more点击，新页面右边有
+download点击，新页面找到'64-bit PC torrents (DVD)'，新页面最下面选择debian-11.6.0-
+amd64-DVD-1.iso.torrent下载即可,然后打开迅雷就可以下载了.
+1.3.2 debian安装
+	Write the changes to disks?->yes
 1.4 linux shell 常用命令(cd,ls,cp,mkdir,apt)
 	win键后输入terminal回车进入终端界面.
 
