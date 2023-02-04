@@ -23,7 +23,8 @@ Description=myapp service
 
 [Service]
 Type=simple
-#设置应用的工作目录
+User=firefly
+Group=root
 WorkingDirectory=/myapp_path
 ExecStart=/myapp_path/startMyApp.sh
 ExecStop=/bin/kill -s TERM $MAINPID
