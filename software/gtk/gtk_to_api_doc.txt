@@ -1,0 +1,153 @@
+使用GTK-DOC自动生成API文档
+
+彩色蚂蚁
+
+于 2009-03-27 10:12:00 发布
+
+8254
+ 收藏
+分类专栏： 60.应用开发 文章标签： api 文档 build application 工作 include
+版权
+
+60.应用开发
+专栏收录该内容
+3 篇文章0 订阅
+订阅专栏
+作者：刘旭晖 Raymond转载请注明出处
+
+Email：colorant@163.com
+
+BLOG：http://blog.csdn.net/colorant/
+
+主页：http://sites.google.com/site/rgbbones/
+
+      
+
+之前很少做从零开始做上层应用和中间层的开发，所以从来没有接触过API文档的自动生成这个话题，一直以为这是个很复杂的工作，最近做一个简单的项目，有需求自己从头完整的创建整个项目的框架，所以正好用gtk-doc-tools实践一把文档的自动生成工作，发现其实还是很简单易用的，记录一下一些要点如下。
+
+ 
+
+1         相关参考资料
+http://library.gnome.org/devel/gtk-doc-manual/stable/ GTK-DOC的官方使用手册
+
+如果你仔细的看过这份手册，再在实际实践中处理过一些可能遇到的问题，基本上就不用看我的这篇文档了 ;-)
+
+ 
+
+2         工作机制
+GTK-Doc是一个用来从C代码的注释中生成API文档的工具，尤其适用于使用gobject对象机制编程的项目，并不局限于GTK+或GNOME相关library和程序的文档生成。
+
+2.1        主要工作流程
+基本上，使用GTK-Doc生成API文档，包括几个步骤：
+
+Ø       在项目相关目录和Build相关文件中添加 GTK-Doc所需参数和相关配置文件。
+
+Ø       在代码中按照一定的格式规范添加注释（于普通的注释相比，只需要添加非常少的额外信息）
+
+Ø       使用标准的Build流程（autogen，configure，make等）编译并生成文档
+
+Ø       修改部分GTK-Doc生成的模板和配置文件，进行一些定制工作，如排除某些函数，定制布局，添加而外的help文档等（这部分工作并不需要每次都做，这些模板和配置文件只在第一次build的时候生成，以后不会自动覆盖）
+
+3         步骤
+3.1        添加Build所需内容
+Ø       添加目录结构：通常会将API文档创建在docs/reference目录中。根据需求可以创建多个子目录用于不同的模块。另外，在各层目录结构中，添加标准的Makefile.am文件用来包含子目录就不用多说了吧。
+
+Ø       Autogen.sh: 在automake、autoconf等操作之前，添加gtkdocize || exit 1，如果你没有创建autogen.sh，那么你就需要在build之前手工执行gtkdocize命令。 可以使用 gtkdocize –flavour no-tmpl 来限制不生成tmpl模板目录（即不使用中间模板，文档全部内容直接从source code获得）
+
+Ø       Configure.ac: 添加gtk-doc检测的相关宏，如：GTK_DOC_CHECK(1.9) 除了检查GTK-Doc的版本，这个宏还将在configure脚本中添加 –enable-gtk-doc选项，需要注意的是，这个选项默认是disable的
+
+Ø       Makefile.am: 在docs/reference或你创建的其它文档子目录下，拷贝gtk-doc-tools的example Makefile.am（ubuntu中安装在/usr/share/doc/gtk-doc-tools/examples/Makefile.am）并根据实际情况修改里面的内容（每个选项都有具体的解释）。通常你所需要修改的大概会有：
+
+ 
+
+模块的名字：DOC_MODULE=
+
+代码的相对路径：DOC_SOURCE_DIR=
+
+文档在哪些文件被修改时需要被重新build，即依赖关系：HFILE_GLOB= , CFILE_GLOB=
+
+需要忽略的文件：IGNORE_HFILES=
+
+3.2        在代码中添加注释
+GTK-Doc所识别的注释都是以 “/**” 开头，每行一个 “*”，以”*/” 结尾，中间包含一些特定的关键字或符号用于标明注释的内容和类型，以区别于普通文本。
+
+3.2.1          文件头的格式
+首先当然是要给文件添加文件级的注释，格式如下
+
+/**
+
+ * SECTION:meepapp
+
+ * @short_description: the application class
+
+ * @see_also: #MeepSettings
+
+ * @stability: Stable
+
+ * @include: meep/app.h
+
+ *
+
+ * The application class handles ...
+
+ */
+
+ 
+
+Ø       SECTION: 文件名
+
+Ø       @short_description: 该文件内容的简单描述
+
+Ø       @see_also: 与该文档相关的内容，符号等
+
+Ø       @stability: 版本稳定性信息
+
+Ø       @include: 使用该文件中的函数，所需要包含的头文件，注意不用写<…>或”…”
+
+3.2.2          函数的注释格式
+函数的注释格式大体如下：
+
+/**
+
+ * function_name:
+
+ * @par1:  description of parameter 1
+
+ * @par2:  description of parameter 2
+
+ *
+
+ * The function description goes here.
+
+ *
+
+ * Returns: an integer.
+
+*
+
+* Since: Version
+
+ */
+
+ 
+
+Ø       类似@par1: 这样以”@”开头的符号标识了你需要注释的函数参数。
+
+Ø       Returns: 函数的返回信息
+
+Ø       Since: 从哪个版本引入的函数
+
+ 
+
+3.2.3          其它
+需要注意的一点是，上面这些关键字多数都是可选的，即使不写任何注释，GTK-Doc也会将函数，结构，属性，信号等信息自动的添加到API文档中，只是没有额外的说明信息。另外，static和inline的函数不会被添加到文档中。
+
+结构，属性，信号等注释的格式这里就不多说了，简单的就看看别人的代码怎么写的，要想了解得详细些，就参考gtk-doc的官方手册吧。
+
+3.3        定制最终输出结果
+最终的文档会由一个主文件将各个Section的页面链接在一起，这个主文件的SGML/XML模板文件（MODULE-docs.sgml）在第一次build的时候生成，在以后的build中不会被覆盖（即使使用make distclean也不会被删除）。你可以修改这个主文件模板，将输出的section组织在不同的chapter中，或着添加额外的内容等等。
+
+同样，你还可以修改MODULE-sections.txt文件，定制各个Section页面的布局和内容。这个文件同样不会在build过程中被自动覆盖。
+————————————————
+版权声明：本文为CSDN博主「彩色蚂蚁」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/colorant/article/details/4028718

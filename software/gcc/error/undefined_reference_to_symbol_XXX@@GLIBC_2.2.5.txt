@@ -1,0 +1,3 @@
+	undefined reference to symbol 'sinf@@GLIBC_2.2.5'
+
+-lm

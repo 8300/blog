@@ -22,11 +22,13 @@ sudo apt install default-jre default-jdk
 
 ## make deb
 ------------------------------------------
- 2045  mkdir work
- 2046  cd work/
- 2049  mkdir -p ./usr/bin
- 2050  mkdir DEBIAN
- 2051  echo "Package: add_num
+mkdir work
+cd work/
+mkdir -p ./usr/bin
+mkdir DEBIAN
+vi DEBIAN/control
+
+Package: add-num
 Version: 1.0
 Section: custom
 Priority: optional
@@ -34,10 +36,11 @@ Architecture: all
 Essential: no
 Installed-Size: 1024
 Maintainer: linuxconfig.org
-Description: Print linuxconfig.org on the screen" >DEBIAN/control
- 2052  vi DEBIAN/control
- 2053  cp ../bin/debian/main usr/bin/chat
- 2054  dpkg -b . /home/ts/tmp/chat_0.0.1.deb
+Description: Print linuxconfig.org on the screen
+
+
+cp ../bin/debian/main usr/bin/chat
+dpkg -b . chat_0.0.1.deb
 
 
 ## linux系统中Virtualbox启用USB设备支持的方法
