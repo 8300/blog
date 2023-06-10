@@ -1,2 +1,0 @@
-touch /var/log/mosquitto.log
-chmod  777 mosquitto.log 

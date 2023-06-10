@@ -1,4 +1,0 @@
-
-		warning but the return value from void to unsigned int
-
-If the function is undeclared in .h file. return int type.

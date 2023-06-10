@@ -1,9 +1,0 @@
-		ts is not the sudoers file
-su root
-chmod +w /etc/sudoers
-nano /etc/sudoers	(add)
-/*
-	ts ALL=(ALL) ALL
-*/
-exit
-
